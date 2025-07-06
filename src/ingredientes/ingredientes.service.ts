@@ -27,6 +27,13 @@ export class IngredientesService {
   }
 
   async update(id: number, dto: UpdateIngredienteDto) {
+    // Nos aseguramos de que 'unidad' sea un número o null
+    if (dto.unidad !== undefined && dto.unidad !== null) {
+      dto.unidad = Number(dto.unidad);
+      if (isNaN(dto.unidad)) {
+        throw new Error('El campo unidad debe ser un número');
+      }
+    }
     await this.ingredienteRepository.update(id, dto);
     return this.ingredienteRepository.findOneBy({ id });
   }

@@ -1,15 +1,27 @@
 import { IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator";
+import { Type } from 'class-transformer';
 
 export class CreateIngredienteDto {
-@IsNotEmpty()
-@IsString()
-nombre: string;
+  @IsNotEmpty()
+  @IsString()
+  nombre: string;
 
-@IsNotEmpty()
-@IsNumber()
-precio: number;
+  @IsNotEmpty()
+  @Type(() => Number)
+  @IsNumber()
+  precio: number;
 
-@IsOptional()
-@IsString()
-unidad?: string;
+  @IsOptional()
+  @Type(() => Number)
+  @IsNumber()
+  unidad?: number;
+
+  @IsOptional()
+  @Type(() => Number)
+  @IsNumber()
+  peso?: number;
+
+  @IsOptional()
+  @IsString()
+  unidadPeso?: string;
 }

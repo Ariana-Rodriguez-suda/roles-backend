@@ -11,6 +11,12 @@ export class Ingrediente {
     @Column('decimal', { precision: 10, scale: 2 })
     precio: number;
 
+    @Column('decimal', { precision: 10, scale: 2, nullable: true })
+    unidad: number;
+
+    @Column('decimal', { precision: 10, scale: 2, nullable: true, default: 0 })
+    peso: number;
+
     @Column({ nullable: true })
-    unidad: string;
+    unidadPeso: string;
 }
